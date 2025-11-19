@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyLink - URL Shortener</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>TinyLink</h1>
+            <p class="subtitle">Make your URLs shorter and shareable</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Form Section -->
+            <div class="form-section">
+                <h2>Shorten Your URL</h2>
+                <form id="urlForm">
+                    <div class="form-group">
+                        <label for="urlInput">Enter your long URL:</label>
+                        <input
+                            type="url"
+                            id="urlInput"
+                            name="originalUrl"
+                            placeholder="https://example.com/very/long/url"
+                            required
+                        >
+                        <small class="help-text">Example: https://www.google.com</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span>Shorten URL</span>
+                        <span class="spinner" id="spinner" style="display: none;">↻</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>Your Short Link</h2>
+                <div class="result-card">
+                    <div class="result-item">
+                        <label>Short URL:</label>
+                        <div class="result-content">
+                            <input
+                                type="text"
+                                id="shortUrlDisplay"
+                                readonly
+                                class="result-input"
+                            >
+                            <button type="button" class="btn btn-copy" onclick="copyToClipboard(event)">
+                                 Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="result-item">
+                        <label>Original URL:</label>
+                        <textarea
+                            id="originalUrlDisplay"
+                            readonly
+                            class="result-textarea"
+                        ></textarea>
+                    </div>
+
+                    <div class="result-item">
+                        <label>Short Code:</label>
+                        <input
+                            type="text"
+                            id="shortCodeDisplay"
+                            readonly
+                            class="result-input"
+                        >
+                    </div>
+
+                    <div class="result-stats">
+                        <p id="successMessage" class="success-message"></p>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                         Shorten Another URL
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-card">
+                    <p class="error-message" id="errorMessage"></p>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                        Try Again
+                    </button>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h3>How It Works</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Paste Your URL</h4>
+                            <p>Enter any long URL in the input field above</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Get Short Code</h4>
+                            <p>We generate a unique short code for your URL</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Share & Track</h4>
+                            <p>Share your short URL and track click statistics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 TinyLink. Built with Node.js & Express</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/script.js"></script>
+</body>
+</html>
